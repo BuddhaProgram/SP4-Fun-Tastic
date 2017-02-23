@@ -1,0 +1,8 @@
+*Quest 1
+This is quest 1 description
+&1
+End
+*Quest 2
+This is quest 2 description
+&1
+End

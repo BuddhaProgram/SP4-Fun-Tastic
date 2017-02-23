@@ -1,0 +1,414 @@
+fileFormatVersion: 2
+guid: 1036e7500d28c1f47b1b1760f6fd51fa
+timeCreated: 1487572127
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: QuestNPC_Idle_1
+    21300002: QuestNPC_Idle_2
+    21300004: QuestNPC_Idle_3
+    21300006: QuestNPC_Idle_4
+    21300008: QuestNPC_Idle_5
+    21300010: QuestNPC_Idle_6
+    21300012: QuestNPC_Idle_7
+    21300014: QuestNPC_Idle_8
+    21300016: QuestNPC_Idle_9
+    21300018: QuestNPC_Idle_10
+    21300020: QuestNPC_Idle_11
+    21300022: QuestNPC_Idle_12
+    21300024: QuestNPC_Idle_13
+    21300026: QuestNPC_Idle_14
+    21300028: QuestNPC_Idle_15
+    21300030: QuestNPC_Idle_16
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: QuestNPC_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 30.5}
+        - {x: -28, y: 26.5}
+        - {x: -28, y: -18.5}
+        - {x: -25, y: -28.5}
+        - {x: -19, y: -24.5}
+        - {x: -17, y: -20.5}
+        - {x: -16, y: -16.5}
+        - {x: -16, y: -18.5}
+        - {x: -13, y: -26.5}
+        - {x: -9, y: -30.5}
+        - {x: 6, y: -30.5}
+        - {x: 12, y: -28.5}
+        - {x: 28, y: -15.5}
+        - {x: 28, y: 8.5}
+        - {x: 20, y: 30.5}
+    - name: QuestNPC_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 30.5}
+        - {x: -19, y: 30.5}
+        - {x: -28, y: 27.5}
+        - {x: -28, y: -18.5}
+        - {x: -22, y: -26.5}
+        - {x: -11, y: -30.5}
+        - {x: 11, y: -30.5}
+        - {x: 28, y: -15.5}
+        - {x: 28, y: 4.5}
+        - {x: 20, y: 29.5}
+    - name: QuestNPC_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: 30.5}
+        - {x: -24.5, y: 30.5}
+        - {x: -27.5, y: 23.5}
+        - {x: -27.5, y: -26.5}
+        - {x: -18.5, y: -30.5}
+        - {x: 8.5, y: -30.5}
+        - {x: 27.5, y: -13.5}
+        - {x: 27.5, y: 14.5}
+        - {x: 26.5, y: 25.5}
+    - name: QuestNPC_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 53
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 30.5}
+        - {x: -26.5, y: -19.5}
+        - {x: -18.5, y: -24.5}
+        - {x: -15.5, y: -23.5}
+        - {x: -9.5, y: -30.5}
+        - {x: 5.5, y: -30.5}
+        - {x: 10.5, y: -28.5}
+        - {x: 26.5, y: -18.5}
+        - {x: 26.5, y: 30.5}
+    - name: QuestNPC_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 0
+        width: 52
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 30.5}
+        - {x: -26, y: -29.5}
+        - {x: -24, y: -30.5}
+        - {x: 22, y: -30.5}
+        - {x: 26, y: -27.5}
+        - {x: 26, y: 30.5}
+    - name: QuestNPC_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 0
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 30.5}
+        - {x: -23.5, y: 25.5}
+        - {x: -25.5, y: 16.5}
+        - {x: -25.5, y: -17.5}
+        - {x: -20.5, y: -24.5}
+        - {x: -15.5, y: -30.5}
+        - {x: 25.5, y: -30.5}
+        - {x: 25.5, y: 30.5}
+    - name: QuestNPC_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 53
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.5, y: 30.5}
+        - {x: -26.5, y: 14.5}
+        - {x: -26.5, y: -24.5}
+        - {x: -17.5, y: -30.5}
+        - {x: 10.5, y: -30.5}
+        - {x: 26.5, y: -23.5}
+        - {x: 26.5, y: 30.5}
+    - name: QuestNPC_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 0
+        width: 54
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 30.5}
+        - {x: -27, y: 20.5}
+        - {x: -27, y: -22.5}
+        - {x: -10, y: -30.5}
+        - {x: 11, y: -30.5}
+        - {x: 27, y: -19.5}
+        - {x: 27, y: 13.5}
+        - {x: 23, y: 30.5}
+    - name: QuestNPC_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 0
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 30.5}
+        - {x: -28, y: -20.5}
+        - {x: -27, y: -25.5}
+        - {x: -23, y: -22.5}
+        - {x: -20, y: -20.5}
+        - {x: -10, y: -30.5}
+        - {x: 6, y: -30.5}
+        - {x: 24, y: -23.5}
+        - {x: 28, y: -14.5}
+        - {x: 28, y: 20.5}
+        - {x: 25, y: 30.5}
+    - name: QuestNPC_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 58
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: -30.5}
+        - {x: 20, y: -30.5}
+        - {x: 29, y: -25.5}
+        - {x: 29, y: 30.5}
+        - {x: -24, y: 30.5}
+        - {x: -29, y: 29.5}
+        - {x: -29, y: -26.5}
+    - name: QuestNPC_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 0
+        width: 59
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.5, y: 30.5}
+        - {x: -27.5, y: 30.5}
+        - {x: -29.5, y: 17.5}
+        - {x: -29.5, y: -25.5}
+        - {x: -18.5, y: -30.5}
+        - {x: 5.5, y: -30.5}
+        - {x: 23.5, y: -22.5}
+        - {x: 29.5, y: -15.5}
+        - {x: 29.5, y: 7.5}
+        - {x: 26.5, y: 22.5}
+    - name: QuestNPC_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 0
+        width: 59
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24.5, y: 30.5}
+        - {x: -23.5, y: 30.5}
+        - {x: -29.5, y: 28.5}
+        - {x: -29.5, y: -19.5}
+        - {x: -28.5, y: -24.5}
+        - {x: -19.5, y: -30.5}
+        - {x: 11.5, y: -30.5}
+        - {x: 24.5, y: -23.5}
+        - {x: 29.5, y: -17.5}
+        - {x: 29.5, y: 18.5}
+        - {x: 28.5, y: 27.5}
+    - name: QuestNPC_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 0
+        width: 57
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.5, y: 30.5}
+        - {x: -21.5, y: 30.5}
+        - {x: -28.5, y: 27.5}
+        - {x: -28.5, y: -30.5}
+        - {x: 9.5, y: -30.5}
+        - {x: 28.5, y: -13.5}
+        - {x: 28.5, y: 7.5}
+        - {x: 25.5, y: 23.5}
+    - name: QuestNPC_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 0
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 30.5}
+        - {x: -27.5, y: 14.5}
+        - {x: -27.5, y: -20.5}
+        - {x: -25.5, y: -27.5}
+        - {x: -16.5, y: -30.5}
+        - {x: 10.5, y: -30.5}
+        - {x: 27.5, y: -15.5}
+        - {x: 27.5, y: 19.5}
+        - {x: 25.5, y: 30.5}
+    - name: QuestNPC_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 0
+        width: 53
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15.5, y: -19.5}
+        - {x: 22.5, y: -17.5}
+        - {x: 26.5, y: -12.5}
+        - {x: 26.5, y: 5.5}
+        - {x: 23.5, y: 23.5}
+        - {x: 18.5, y: 30.5}
+        - {x: -19.5, y: 30.5}
+        - {x: -23.5, y: 26.5}
+        - {x: -26.5, y: 16.5}
+        - {x: -26.5, y: -20.5}
+        - {x: -22.5, y: -25.5}
+        - {x: -13.5, y: -30.5}
+        - {x: 7.5, y: -30.5}
+        - {x: 11.5, y: -28.5}
+        - {x: 10.5, y: -20.5}
+        - {x: 14.5, y: -17.5}
+        - {x: 13.5, y: -17.5}
+    - name: QuestNPC_Idle_16
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 52
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: -16.5}
+        - {x: 16, y: -18.5}
+        - {x: 19, y: -19.5}
+        - {x: 26, y: -13.5}
+        - {x: 26, y: 13.5}
+        - {x: 21, y: 30.5}
+        - {x: -21, y: 30.5}
+        - {x: -26, y: 22.5}
+        - {x: -26, y: -21.5}
+        - {x: -24, y: -30.5}
+        - {x: -23, y: -30.5}
+        - {x: -16, y: -23.5}
+        - {x: -15, y: -19.5}
+        - {x: -15, y: -16.5}
+        - {x: -15, y: -28.5}
+        - {x: -9, y: -30.5}
+        - {x: 7, y: -30.5}
+        - {x: 10, y: -27.5}
+        - {x: 14, y: -16.5}
+        - {x: 14, y: -13.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
