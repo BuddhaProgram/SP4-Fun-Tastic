@@ -9,6 +9,7 @@ public abstract class Abilities : ScriptableObject {
     public float a_coolDown = 1f;
     public float a_range = 10f;
 
+
   
     public AudioClip audio;
     
@@ -19,5 +20,7 @@ public abstract class Abilities : ScriptableObject {
     public abstract void TriggerAbility(Vector3 pos, Vector3 direction,int atk);
 
     public abstract void DrawAimLine(GameObject player);
- 
+
+
+    public abstract int GetType();
 }

@@ -50,7 +50,17 @@ public class Item
 
     public Item()
     {
-        //this.ability = AbilityDataBase.GetInstance().GetAbility("Scriptable Objects/Abilities/Basic Attack");
+        itemType = Item.ItemType.None;
+        itemName = "";
+        itemID = -1;
+        itemDesc = "";
+        itemAbility = "";
+        atk = 0;
+        vit = 0;
+        agi = 0;
+        itemStack = 0;
+        itemIcon = null;
+        ability = null;
     }
 
     public int GetItemID()

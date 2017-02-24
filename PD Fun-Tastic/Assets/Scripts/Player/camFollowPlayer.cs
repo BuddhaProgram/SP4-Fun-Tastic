@@ -6,7 +6,7 @@ public class camFollowPlayer : MonoBehaviour {
     public float cameraHeight = 3.0f;
     private Camera cam = null;
     public float camAngle = 60f;
-    public Plane ground;
+    public GameObject ground;
 
     public void Start()
     {
@@ -24,15 +24,16 @@ public class camFollowPlayer : MonoBehaviour {
 
     }
 
-    void GetMouseOnPlane()
+    public Vector3 GetMouseOnPlane()
     {
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //float distance;
-        //if (ground.collider.Raycast(ray, out hit, Mathf.Infinity))
-        //{
-        //    transform.position = hit.point;
-        //}
-        //return null;
+        Vector3 result = new Vector3();
+        Plane plane = new Plane(Vector3.up, ground.transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float distance=0f;
+        if (plane.Raycast(ray,out distance))
+        {
+            result = ray.GetPoint(distance);
+        }
+        return result;
     }
 }

@@ -7,8 +7,6 @@ public class ProjectileAbility : Abilities {
     public Projectile projectile;
    // public LineRenderer line = new LineRenderer();
 
-    public Color color;
-
     public override void Initialise()
     {
         //line.material = new Material(Shader.Find("Unlit/Color"));
@@ -21,12 +19,20 @@ public class ProjectileAbility : Abilities {
         GameObject proj = Instantiate(projectile.gameObject);
         proj.GetComponent<Projectile>().direction = direction;
         proj.GetComponent<Transform>().position = pos + direction.normalized * 1f;
+        proj.transform.Translate(0, 1, 0);
         proj.GetComponent<Projectile>().range = a_range;
         proj.GetComponent<Projectile>().damage = atk * this.a_damage;
+
+        
     }
     public override void DrawAimLine(GameObject player)
     {
+        player.GetComponent<AbilityRangeIndicatorRenderer>().DrawProjectileAim(a_range);
+    }
 
+    public override int GetType()
+    {
+        return 1;
     }
     
 }

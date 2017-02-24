@@ -21,7 +21,7 @@ public class LoadAllSavedItemsToInventory{
 
                 if (_itemListInstance.items[i].GetItemID() == i_allItemID[i])
                 {
-                    _InventoryListInstance.inventoryItemList.Add(_itemListInstance.items[i]);
+                    _InventoryListInstance.AddItem(_itemListInstance.items[i].itemName);
                 }
             }
         }

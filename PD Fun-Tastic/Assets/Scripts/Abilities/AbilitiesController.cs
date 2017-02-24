@@ -12,11 +12,11 @@ public class AbilitiesController : MonoBehaviour {
 	}
 	
 	void Update () {
-        Vector2 mousePos = Input.mousePosition;
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        gameObject.transform.LookAt(new Vector3(mousePos.x, 0, mousePos.y), new Vector3(0, 1, 0));
+        Vector3 mousePos = cam.GetComponent<camFollowPlayer>().GetMouseOnPlane();
+        //mousePos -= transform.position;
+       
+       // float angle = Mathf.Atan2(mousePos.z, mousePos.x) * Mathf.Rad2Deg;
+        gameObject.transform.LookAt(new Vector3(mousePos.x, 0f, mousePos.z), new Vector3(0, 1, 0));
         //gameObject.transform.rotation = Quaternion.AngleAxis(-angle , new Vector3(0,1,0));
 
         //Vector3 mousePos = Input.mousePosition;

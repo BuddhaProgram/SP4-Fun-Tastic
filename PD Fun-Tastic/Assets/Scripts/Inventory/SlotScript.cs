@@ -21,21 +21,21 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     void Update()
     {
-        if (inventory.Items[slotNumber].itemName != null && inventory.Items[slotNumber].itemType != Item.ItemType.None)
+        if (inventory.items[slotNumber].itemType != Item.ItemType.None)
         {
             itemAmount.enabled = false;
 
-            item = inventory.Items[slotNumber];
+            item = inventory.items[slotNumber];
             itemImage.enabled = true;
-            itemImage.sprite = inventory.Items[slotNumber].itemIcon;
+            itemImage.sprite = item.itemIcon;
 
-            if (inventory.Items[slotNumber].itemType == Item.ItemType.Consumable)
+            if (inventory.items[slotNumber].itemType == Item.ItemType.Consumable)
             {
                 itemAmount.enabled = true;
-                itemAmount.text = "" + inventory.Items[slotNumber].itemStack;
+                itemAmount.text = "" + inventory.items[slotNumber].itemStack;
             }
         }
-        else if (inventory.Items[slotNumber].itemName == null)
+        else
         {
             itemImage.enabled = false;
         }
@@ -47,21 +47,21 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         {
             if (!inventory.draggingItem)
             {
-                if (inventory.Items[slotNumber].itemName != null)
+                if (inventory.items[slotNumber].itemName != null)
                 {
-                    inventory.showDraggedItem(inventory.Items[slotNumber], slotNumber);
-                    inventory.Items[slotNumber] = new Item();
+                    inventory.showDraggedItem(inventory.items[slotNumber], slotNumber);
+                    inventory.items[slotNumber] = new Item();
 
                     itemAmount.enabled = false;
                 }
             }
             else
             {
-                if (inventory.Items[slotNumber].itemType == Item.ItemType.None && inventory.draggingItem)
+                if (inventory.items[slotNumber].itemType == Item.ItemType.None && inventory.draggingItem)
                 {
-                    Item temp = inventory.Items[slotNumber];
+                    Item temp = inventory.items[slotNumber];
 
-                    inventory.Items[slotNumber] = inventory.draggedItem;
+                    inventory.items[slotNumber] = inventory.draggedItem;
                     inventory.draggedItem = temp;
 
                     inventory.closeDraggedItem();
@@ -72,10 +72,10 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
                     {
                         if (inventory.draggingItem)
                         {
-                            if (inventory.Items[slotNumber].itemName != null)
+                            if (inventory.items[slotNumber].itemName != null)
                             {
-                                inventory.Items[inventory.indexOfDraggedItem] = inventory.Items[slotNumber];
-                                inventory.Items[slotNumber] = inventory.draggedItem;
+                                inventory.items[inventory.indexOfDraggedItem] = inventory.items[slotNumber];
+                                inventory.items[slotNumber] = inventory.draggedItem;
                                 inventory.closeDraggedItem();
                             }
                         }
@@ -87,33 +87,33 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             }
         }
 
-        if (data.button == PointerEventData.InputButton.Right)
-        {
-            if (inventory.Items[slotNumber].itemType == Item.ItemType.Consumable)
-            {
-                inventory.Items[slotNumber].itemStack--;
+        //if (data.button == PointerEventData.InputButton.Right)
+        //{
+        //    if (inventory.items[slotNumber].itemType == Item.ItemType.Consumable)
+        //    {
+        //        inventory.items[slotNumber].itemstack--;
 
-                if (inventory.Items[slotNumber].itemStack == 0)
-                {
-                    inventory.Items[slotNumber] = new Item();
-                    itemAmount.enabled = false;
-                    inventory.closeTooltip();
-                }
-            }
-        }
+        //        if (inventory.items[slotNumber].itemstack == 0)
+        //        {
+        //            inventory.items[slotNumber] = new Item();
+        //            itemAmount.enabled = false;
+        //            inventory.closeTooltip();
+        //        }
+        //    }
+        //}
     }
 
     public void OnPointerEnter(PointerEventData data)
     {
-        if (inventory.Items[slotNumber].itemName != null && !inventory.draggingItem)
+        if (inventory.items[slotNumber].itemName != null && !inventory.draggingItem)
         {
-            inventory.showTooltip(inventory.Slots[slotNumber].GetComponent<RectTransform>().localPosition, inventory.Items[slotNumber]);
+            inventory.showTooltip(inventory.Slots[slotNumber].GetComponent<RectTransform>().localPosition, inventory.items[slotNumber]);
         }
     }
 
     public void OnPointerExit(PointerEventData data)
     {
-        if (inventory.Items[slotNumber].itemName != null)
+        if (inventory.items[slotNumber].itemName != null)
         {
             inventory.closeTooltip();
         }

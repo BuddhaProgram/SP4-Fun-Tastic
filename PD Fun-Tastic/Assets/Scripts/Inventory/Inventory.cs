@@ -8,7 +8,10 @@ public class Inventory : MonoBehaviour
 {
     public GameObject inventoryCanvas;
     public List<GameObject> Slots = new List<GameObject>();
-    public List<Item> Items = InventoryData.GetInstance().GetItemList();
+
+    public List<Item> items = InventoryData.GetInstance().GetItemList();
+    public InventoryData _allItemsInInventory;
+
     public GameObject slots;
     ItemDatabase database;
     public GameObject tooltip;
@@ -81,22 +84,29 @@ public class Inventory : MonoBehaviour
         gold = 100;
 
         int slotAmount = 0;
+        _allItemsInInventory = InventoryData.GetInstance();
+        Debug.Log("Size of thingy: " + _allItemsInInventory.GetItemList().Count);
         database = ItemDatabase.GetInstance();
 
         int x = -60;
         int y = 240;
+        //int a = 0;
 
-        for (int i = 1; i < 9; i++)
+        for (int i = 0; i < 9; i++)
         {
-            for (int k = 1; k < 4; k++)
+            for (int k = 0; k < 4; k++)
             {
                 GameObject slot = (GameObject)Instantiate(slots);
                 slot.GetComponent<SlotScript>().slotNumber = slotAmount;
                 Slots.Add(slot);
-                Items.Add(new Item());
+
+                Debug.Log(i * 4 + k);
+                slot.GetComponent<SlotScript>().item = _allItemsInInventory.GetItemList()[i * 4 + k];
+                
                 slot.transform.parent = this.gameObject.transform;
                 slot.name = "Slot" + i + "." + k;
                 slot.GetComponent<RectTransform>().localPosition = new Vector3(x, y, 0);
+
                 x += 70;
 
                 if (k == 3)
@@ -107,19 +117,20 @@ public class Inventory : MonoBehaviour
                 slotAmount++;
             }
         }
+        
 
-        addItem("Shiny Armor");
-        addItem("Gold Armor");
-        addItem("What Helmet");
-        addItem("Godly Sword Maybe");
-        addItem("Poking Helmet");
-        addItem("Blood Potion");
-        addItem("Blood Potion");
+        //addItem("Shiny Armor");
+        //addItem("Gold Armor");
+        //addItem("What Helmet");
+        //addItem("Godly Sword Maybe");
+        //addItem("Poking Helmet");
+        //addItem("Blood Potion");
+        //addItem("Blood Potion");
     }
 
     public void CheckIfItemExist(int itemID, Item item)
     {
-        for (int i = 0; i < Items.Count; i++)
+        /*for (int i = 0; i < Items.Count; i++)
         {
             if (Items[i].itemID == itemID)
             {
@@ -130,12 +141,12 @@ public class Inventory : MonoBehaviour
             {
                 addItemAtEmptySlot(item);
             }
-        }
+        }*/
     }
 
     public void CheckIfItemExist(string itemName, Item item)
     {
-        for (int i = 0; i < Items.Count; i++)
+        /*for (int i = 0; i < Items.Count; i++)
         {
             if (Items[i].itemName == itemName)
             {
@@ -146,7 +157,7 @@ public class Inventory : MonoBehaviour
             {
                 addItemAtEmptySlot(item);
             }
-        }
+        }*/
     }
 
     public void addExistingItem(Item item)
@@ -161,24 +172,32 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void addItem(int id)
+    void addItem()
     {
-        for (int i = 0; i < database.items.Count; i++)
+        //for (int i = 0; i < _allItemsInInventory.Get.Count; i++)
         {
-            if (database.items[i].itemID == id)
-            {
-                Item item = database.items[i];
+            //Item item = _allItemsInInventory.inventoryItemList[i];
+            //if (_allItemsInInventory.inventoryItemList[i].itemType == Item.ItemType.Consumable)
+            //{
+            //    for (int x = 0; i < Slots.Count; ++i)
+            //    {
+            //        if (item.itemID == Slots[i].)
+            //    }
+            //}
+            //if (database.items[i].itemID == id)
+            //{
+            //    Item item = database.items[i];
 
-                if (database.items[i].itemType == Item.ItemType.Consumable)
-                {
-                    CheckIfItemExist(id, item);
-                    break;
-                }
-                else
-                {
-                    addItemAtEmptySlot(item);
-                }
-            }
+            //    if (database.items[i].itemType == Item.ItemType.Consumable)
+            //    {
+            //        CheckIfItemExist(id, item);
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        addItemAtEmptySlot(item);
+            //    }
+            //}
         }
     }
 
@@ -205,14 +224,14 @@ public class Inventory : MonoBehaviour
 
     void addItemAtEmptySlot(Item item)
     {
-        for (int i = 0; i < Items.Count; i++)
+        /*for (int i = 0; i < Items.Count; i++)
         {
             if (Items[i].itemName == null)
             {
                 Items[i] = item;
                 break;
             }
-        }
+        }*/
     }
 
     public void AddGold(int gold)

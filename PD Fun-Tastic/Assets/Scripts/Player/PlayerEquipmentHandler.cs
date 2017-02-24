@@ -52,7 +52,7 @@ public class PlayerEquipmentHandler : MonoBehaviour
             s.vit_eq += weapon.item.vit;
             s.agi_eq += weapon.item.agi;
             basic.ability = weapon.item.ability;
-            //basic.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
+           // basic.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
         else
         {
@@ -76,26 +76,26 @@ public class PlayerEquipmentHandler : MonoBehaviour
 
         if (body.item.itemType != Item.ItemType.None)
         {
-            //skill2.ability = body.item.ability;
+            skill2.ability = body.item.ability;
             s.atk_eq += body.item.atk;
             s.vit_eq += body.item.vit;
             s.agi_eq += body.item.agi;
         }
         else
         {
-            //skill2.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
+            skill2.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
 
         if (legs.item.itemType != Item.ItemType.None)
         {
-            //skill3.ability = legs.item.ability;
+            skill3.ability = legs.item.ability;
             s.atk_eq += legs.item.atk;
             s.vit_eq += legs.item.vit;
             s.agi_eq += legs.item.agi;
         }
         else
         {
-            //skill3.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
+            skill3.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
 
         if (lastBasic != basic.ability.aName)
@@ -108,14 +108,14 @@ public class PlayerEquipmentHandler : MonoBehaviour
             skill1_UI.Initialize();
         }
 
-        //if (lastSkill2 != skill2.ability.aName)
-        //{
-        //    skill2_UI.Initialize();
-        //}
-        //if (lastSkill3 != skill3.ability.aName)
-        //{
-        //    skill3_UI.Initialize();
-        //}
+        if (lastSkill2 != skill2.ability.aName)
+        {
+            skill2_UI.Initialize();
+        }
+        if (lastSkill3 != skill3.ability.aName)
+        {
+            skill3_UI.Initialize();
+        }
 
 
 

@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.EventSystems;
 
 public class DisplayAllConsumables : MonoBehaviour {
     SingletonConsumablesData _allConsumableItems = SingletonConsumablesData.GetInstance();
     List<Item> _DisplayConsumableInShop = new List<Item>();
     int[] i_randomConsumableItems = new int[10]; //Make sure not larger than consumable list size or you will infinite while loop and universe explodes.
-    public Button[] _allButtons;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class DisplayAllConsumables : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //PurchaseItemFromShop();
 	}
 
     public int GetDisplayedConsumableCount()
@@ -33,7 +33,7 @@ public class DisplayAllConsumables : MonoBehaviour {
     public void LoadToShopList()
     {
         // Makes sure the list is empty before adding it and display in the shop
-        _DisplayConsumableInShop.Clear();
+        //_DisplayConsumableInShop.Clear();
 
         //This is to store the indexes of the items we've already chosen.
         for (int i = 0; i < i_randomConsumableItems.Length; ++i) //If it is -1, then I haven't chosen an item yet. Because index can never be -1.

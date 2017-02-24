@@ -26,15 +26,16 @@ public class AbilityDataBase {
         ability = Resources.Load<Abilities>(filepath + "Fire Ball");
         abilityData.Add("Fire Ball", ability);
 
-        Abilities ability2;
-        ability2 = Resources.Load<Abilities>(filepath + "Basic Ability");
-        abilityData.Add("Basic Ability", ability2);
+ 
+        ability = Resources.Load<Abilities>(filepath + "Basic Ability");
+        abilityData.Add("Basic Ability", ability);
 
-        Abilities ability3;
-        ability3 = Resources.Load<Abilities>(filepath + "Lightning Ball");
-        abilityData.Add("Lightning Ball", ability3);
-        
 
+        ability = Resources.Load<Abilities>(filepath + "Lightning Ball");
+        abilityData.Add("Lightning Ball", ability);
+
+        ability = Resources.Load<Abilities>(filepath + "Fire Rain");
+        abilityData.Add("Fire Rain", ability);
     }
 
 

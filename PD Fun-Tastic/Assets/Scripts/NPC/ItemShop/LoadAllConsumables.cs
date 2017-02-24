@@ -18,7 +18,7 @@ public class LoadAllConsumables : MonoBehaviour {
     {
         for (int i = 0; i < _allItemList.items.Count; ++i)
         {
-            if (_allItemList.items[i].GetItemType() == Item.ItemType.Consumable)
+            if (_allItemList.items[i].GetItemType() != Item.ItemType.Consumable)
             {
                 _consumableList._ConsumableItemList.Add(_allItemList.items[i]); 
             }
