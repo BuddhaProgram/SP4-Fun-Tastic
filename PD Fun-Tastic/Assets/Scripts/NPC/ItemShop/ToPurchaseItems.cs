@@ -22,7 +22,12 @@ public class ToPurchaseItems : MonoBehaviour {
     {
         string s_purchasedItemName = _LoadedItemsInShop.GetComponent<DisplayAllConsumables>().GetDisplayConsumablesInShop()[i_getItemIndex].itemName;
         _InventoryListInstance.AddItem(s_purchasedItemName);
-        print(_InventoryListInstance.GetItemList().Count);
+        print(s_purchasedItemName);
+        for (int i = 0; i < _InventoryListInstance.GetItemList().Count; ++i)
+        {
+            print(_InventoryListInstance.GetItemList()[i].itemName);
+        }
+            
         //print(_InventoryListInstance.inventoryItemList.Count);
         //print(s_purchasedItemName.itemName);
     }
