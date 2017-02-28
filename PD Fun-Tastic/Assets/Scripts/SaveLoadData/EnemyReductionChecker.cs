@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EnemyReductionChecker : MonoBehaviour {
-    SingletonQuestData _instance = SingletonQuestData.GetInstance();
+    QuestData _instance = QuestData.GetInstance();
     public string s_questName;
 
 	// Use this for initialization
@@ -15,20 +15,8 @@ public class EnemyReductionChecker : MonoBehaviour {
 
 	}
 
-    public void SetValueToDictionary()
+    public void EnemyRequirementChecker()
     {
-        if (_instance.QuestChecker.ContainsKey(s_questName) == true)
-        {
-            int i_value;
-            i_value = _instance.QuestChecker[s_questName];
-            i_value--;
-            print(i_value);
-            if (i_value < 0)
-            {
-                i_value = 0;
-            }
-            _instance.QuestChecker[s_questName] = i_value;
-        }
-
+        _instance.MinusRequirementValue();
     }
 }

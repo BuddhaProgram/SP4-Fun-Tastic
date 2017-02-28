@@ -29,13 +29,13 @@ public class ItemDatabase
         consumableList = new List<Item>();
         weaponryList = new List<Item>();
 
-        Debug.Log("trying to load item");
+        //Debug.Log("trying to load item");
 
         //load all item.asset from folder into list
         Item[] tempList;
         tempList = Resources.LoadAll<Item>("Scriptable Objects/Items");
         size = tempList.Length;
-        Debug.Log(tempList.Length);
+        //Debug.Log(tempList.Length);
         //loop through and add into dictionary(itemList)
         for (int i = 0; i < tempList.Length; ++i)
         {

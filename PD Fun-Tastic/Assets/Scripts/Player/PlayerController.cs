@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
         ItemDatabase.GetInstance();
 
-        Debug.Log(ItemDatabase.GetInstance().size);
+        //Debug.Log(ItemDatabase.GetInstance().size);
 	}
 	
 	void Update () {

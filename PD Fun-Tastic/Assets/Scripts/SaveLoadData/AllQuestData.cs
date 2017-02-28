@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AllQuestData : MonoBehaviour
 {
-    SingletonQuestData _instance = SingletonQuestData.GetInstance();
+    QuestData _instance = QuestData.GetInstance();
     public string s_sceneName;
     public string s_questName;
 
@@ -19,25 +19,21 @@ public class AllQuestData : MonoBehaviour
         RequirementIsDone();
     }
 
-    public void AddQuestToDictionary(string s_questName, int i_requirement)
-    {
-        if (_instance.QuestChecker.ContainsKey(s_questName) == false)
-        {
-            _instance.QuestChecker.Add(s_questName, i_requirement);
-        }
-    }
+    //public void AddQuestToDictionary(string s_questName, int i_requirement)
+    //{
+    //    if (_instance.QuestChecker.ContainsKey(s_questName) == false)
+    //    {
+    //        _instance.QuestChecker.Add(s_questName, i_requirement);
+    //    }
+    //}
 
     public void RequirementIsDone()
     {
-        if (_instance.QuestChecker.ContainsKey(s_questName) == true)
+        if (_instance.CheckQuestExistInDictionary(s_questName) == true)
         {
-            int i_outValue;
-            if (_instance.QuestChecker.TryGetValue(s_questName, out i_outValue) == true)
+            if (_instance.GetQuestRequirement() <= 0)
             {
-                if (i_outValue <= 0)
-                {
-                    SceneManager.LoadScene(s_sceneName);
-                }
+                SceneManager.LoadScene(s_sceneName);
             }
         }
     }

@@ -77,7 +77,7 @@ public class StatePatternEnemy : MonoBehaviour
     {
         if(this.GetComponent<Health>().health <= 0)
         {
-            gameObject.GetComponent<EnemyReductionChecker>().SetValueToDictionary();
+            gameObject.GetComponent<EnemyReductionChecker>().EnemyRequirementChecker();
             Destroy(gameObject);
         }
     }

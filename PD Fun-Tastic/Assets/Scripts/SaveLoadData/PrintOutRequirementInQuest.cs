@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PrintOutRequirementInQuest : MonoBehaviour {
-    SingletonQuestData _instance = SingletonQuestData.GetInstance();
+    QuestData _instance = QuestData.GetInstance();
     public string s_questName;
     public Text _RenderRequirement;
 
@@ -19,9 +19,9 @@ public class PrintOutRequirementInQuest : MonoBehaviour {
 
     void RenderRequirementOnSCreen()
     {
-        if (_instance.QuestChecker.ContainsKey(s_questName) == true)
+        if (_instance.CheckQuestExistInDictionary(s_questName) == true)
         {
-            _RenderRequirement.GetComponent<Text>().text = _instance.QuestChecker[s_questName].ToString() + " Monster";
+            _RenderRequirement.GetComponent<Text>().text = _instance.GetQuestRequirement() + " Monster";
         }
     }
 }

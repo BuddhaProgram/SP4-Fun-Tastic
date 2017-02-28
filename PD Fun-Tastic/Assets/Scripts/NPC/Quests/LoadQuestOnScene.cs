@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 
 public class LoadQuestOnScene : MonoBehaviour {
-    SingletonQuestData _instance = SingletonQuestData.GetInstance();
+    QuestData _instance = QuestData.GetInstance();
     public string s_fileName;
     public Text[] _displayQuestDescription;
 
@@ -18,11 +18,10 @@ public class LoadQuestOnScene : MonoBehaviour {
         LoadQuestDescriptionFile();
         for (int i = 0; i < _questNames.Count; ++i)
         {
-            if (_instance.QuestChecker.ContainsKey(_questNames[i]) == false)
+            if (_instance.CheckQuestExistInDictionary(_questNames[i]) == false)
             {
-                _instance.QuestChecker.Add(_questNames[i], _questRequirements[i]);
+                _instance.SetAllQuestToDictionary(_questNames[i], _questRequirements[i]);
             }
-
         }
 	}
 	

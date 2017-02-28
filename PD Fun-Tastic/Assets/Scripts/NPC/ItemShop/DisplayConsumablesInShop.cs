@@ -11,11 +11,13 @@ public class DisplayConsumablesInShop : SpecificNPC {
 
     public void DisplayConsumables()
     {
+        List<Item> tempItemList = GetLoadedConsumables.gameObject.GetComponent<LoadConsumablesToShop>().GetShopList();
+        print(tempItemList.Count);
         for (int i = 0; i < 10; ++i)
         {
             _consumableName[i].GetComponent<Text>().text = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemName;
             _consumableDescription[i].GetComponent<Text>().text = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemDesc;
-            _consumableName[i].GetComponent<Image>().sprite = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemIcon;
+            _consumableImage[i].GetComponent<Image>().sprite = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemIcon;
         }
     }
 

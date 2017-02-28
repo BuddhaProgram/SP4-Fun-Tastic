@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 public class QuestDescription : SpecificNPC {
-    SingletonQuestData _instance = SingletonQuestData.GetInstance();
+    QuestData _instance = QuestData.GetInstance();
     public GameObject _LoadedQuestDescription;
 
 

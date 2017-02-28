@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour {
 
         if (draggedItem != null)
         {
-            Debug.Log("hi");
+            //Debug.Log("hi");
             draggedImage.enabled = true;
             draggedImage.sprite = draggedItem.itemIcon;
 
