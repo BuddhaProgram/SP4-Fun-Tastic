@@ -45,7 +45,13 @@ public class BossStatePatternEnemy : MonoBehaviour
     [HideInInspector]
     public BossPatrolState patrolState;
     [HideInInspector]
-    public BossAttackState attackState;
+    public BossAttackStateRange attackStateRange;
+	[HideInInspector]
+	public BossAttackStateMelee attackStateMelee;
+	[HideInInspector]
+	public BossHealState healState;
+	[HideInInspector]
+	public BossRunState runState;
     [HideInInspector]
     public Transform attackTarget;
     [HideInInspector]
@@ -59,7 +65,10 @@ public class BossStatePatternEnemy : MonoBehaviour
 		idleState = new BossIdleState(this);
         alertState = new BossAlertState(this);
         patrolState = new BossPatrolState(this);
-        attackState = new BossAttackState(this);
+		attackStateRange = new BossAttackStateRange(this);
+        attackStateMelee = new BossAttackStateMelee(this);
+		healState = new BossHealState (this);
+		runState = new BossRunState (this);
         navMeshAgent = GetComponent<NavMeshAgent>();
 		rigibody = GetComponent<Rigidbody> ();
 
@@ -99,7 +108,6 @@ public class BossStatePatternEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-		attRan = Random.Range (1, 3);
         currentState.OnTriggerEnter(other);
     }
     

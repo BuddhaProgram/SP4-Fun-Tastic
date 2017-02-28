@@ -38,6 +38,12 @@ public class AttackState : IEnemyState
 
     }
 
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
 
 	public void ToIdle()
 	{
@@ -69,7 +75,10 @@ public class AttackState : IEnemyState
 		if (Physics.Raycast (enemy.eyes.transform.position, enemyToTarget, out hit, 1f) && hit.collider.CompareTag ("Player")) {
 			animator = enemy.GetComponentsInChildren<Animator> ();
 			animator[0].SetTrigger("Attack");
-			enemy.navMeshAgent.Stop (true);
+			enemy.navMeshAgent.acceleration = 0;
+			enemy.navMeshAgent.velocity = new Vector3 (0,0,0);
+			enemy.navMeshAgent.speed = 0;
+			enemy.navMeshAgent.Stop ();
 			hit.collider.GetComponent<Health> ().ReceiveDamage (10);
 			ToIdle ();
 		} 

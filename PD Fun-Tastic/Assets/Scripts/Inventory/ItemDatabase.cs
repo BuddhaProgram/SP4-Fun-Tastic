@@ -35,7 +35,7 @@ public class ItemDatabase
         Item[] tempList;
         tempList = Resources.LoadAll<Item>("Scriptable Objects/Items");
         size = tempList.Length;
-        Debug.Log(tempList.Length);
+        //Debug.Log(tempList.Length);
         //loop through and add into dictionary(itemList)
         for (int i = 0; i < tempList.Length; ++i)
         {
@@ -45,7 +45,7 @@ public class ItemDatabase
             if (itemList.TryGetValue(tempList[i].itemName, out checker) == false)
             {
                 itemList.Add(tempList[i].itemName, tempList[i]);
-                Debug.Log(tempList[i].itemType);
+                //Debug.Log(tempList[i].itemType);
 
                 if (tempList[i].itemType == ItemType.Consumable)
                 {

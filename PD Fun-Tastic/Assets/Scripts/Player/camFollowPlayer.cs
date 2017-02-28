@@ -18,7 +18,7 @@ public class camFollowPlayer : MonoBehaviour {
     {
         Vector3 pos = new Vector3(player.position.x, player.position.y, player.position.z);
         pos.y = player.position.y + cameraHeight;
-        pos.z -= (Mathf.Atan(camAngle) * cameraHeight);
+        // pos.z -= (Mathf.Atan(camAngle) * cameraHeight);
         cam.orthographicSize = cameraHeight;
         cam.transform.localPosition = pos;
 

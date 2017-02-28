@@ -35,6 +35,8 @@ public class StatePatternEnemy : MonoBehaviour
     public PatrolState patrolState;
     [HideInInspector]
     public AttackState attackState;
+	[HideInInspector]
+	public RunState runState;
     [HideInInspector]
     public Transform attackTarget;
     [HideInInspector]
@@ -49,6 +51,7 @@ public class StatePatternEnemy : MonoBehaviour
         alertState = new AlertState(this);
         patrolState = new PatrolState(this);
         attackState = new AttackState(this);
+		runState = new RunState (this);
         navMeshAgent = GetComponent<NavMeshAgent>();
 		rigibody = GetComponent<Rigidbody> ();
 

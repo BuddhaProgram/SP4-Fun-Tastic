@@ -25,6 +25,20 @@ public class BossIdleState : BossIEnemyState
 
 	}
 
+	public void ToHeal()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.healState;
+	}
+
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
 	public void ToIdle()
 	{
 		Debug.Log("Can't transition to same state");

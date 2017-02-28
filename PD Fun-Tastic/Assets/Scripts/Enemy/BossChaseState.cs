@@ -33,6 +33,14 @@ public class BossChaseState : BossIEnemyState
 
 	}
 
+	public void ToHeal()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.healState;
+	}
+
+
 	public void ToAlertState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
@@ -45,9 +53,20 @@ public class BossChaseState : BossIEnemyState
 
 	}
 
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
 	public void ToAttackState()
 	{
-		enemy.currentState = enemy.attackState;
+		if (Random.Range (1, 3) == 1) {
+			enemy.currentState = enemy.attackStateRange;
+		} else {
+			enemy.currentState = enemy.attackStateMelee;
+		}
 	}
 
 	private void Look()
@@ -76,7 +95,7 @@ public class BossChaseState : BossIEnemyState
 		Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
 		if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, 4f) && hit.collider.CompareTag("Player"))
 		{
-			ToAttackState();
+			ToAttackState ();
 		}
 		enemy.navMeshAgent.Resume();
 	}

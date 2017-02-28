@@ -18,7 +18,7 @@ public class Health : MonoBehaviour {
     public float initialHealth = 100f;
     public float health;
 	private GameObject healthBar;
-
+    public float healthBarHeight = 3f;
     public ELEMENTS element = ELEMENTS.NULL;
 
 	// Use this for initialization
@@ -40,7 +40,7 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float howMuchToMove = ((maxHealth - health) / maxHealth) * 0.5f;
-		healthBar.transform.position = new Vector3(-howMuchToMove, 0.0f, 1.2f) + gameObject.transform.position;
+		healthBar.transform.position = new Vector3(-howMuchToMove, healthBarHeight, 0f) + gameObject.transform.position;
 		healthBar.transform.localScale = new Vector3 (health / maxHealth, 0.1f, 0.1f);
 	}
 
