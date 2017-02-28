@@ -15,7 +15,7 @@ public class RangeAttackState : RangeIEnemyState
 
     public void UpdateState()
     {
-		//Look ();
+		Look ();
         Attack();
     }
 
@@ -41,6 +41,13 @@ public class RangeAttackState : RangeIEnemyState
 
     }
 		
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
     public void ToChaseState()
     {
 		animator = enemy.GetComponentsInChildren<Animator> ();
@@ -74,21 +81,22 @@ public class RangeAttackState : RangeIEnemyState
 
 		float enemyTarget = Vector3.Distance (enemy.target.transform.position,enemy.transform.position);
 
-		if (enemy.fireTimer >= enemy.fireRate)
-		{
-			float angle = Quaternion.Angle (enemy.transform.rotation, Quaternion.LookRotation (enemy.target.transform.position - enemy.transform.position));
+		if (enemy.GetComponent<Health> ().health >= 30) {
+			if (enemy.fireTimer >= enemy.fireRate) {
+				float angle = Quaternion.Angle (enemy.transform.rotation, Quaternion.LookRotation (enemy.target.transform.position - enemy.transform.position));
 
-			if (angle < enemy.fieldOfView)
-			{
-				enemy.SpawnProjectile ();
-				enemy.fireTimer = 0;
-				if (enemyTarget > 4)
-				{
-					ToAlertState ();
+				if (angle < enemy.fieldOfView) {
+					enemy.SpawnProjectile ();
+					enemy.fireTimer = 0;
+					if (enemyTarget > 4) {
+						ToAlertState ();
+					}
 				}
 			}
-		}
 
+		} else {
+			ToRun ();
+		}
 		enemy.navMeshAgent.Resume();
     }
 }

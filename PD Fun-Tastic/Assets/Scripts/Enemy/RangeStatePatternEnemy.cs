@@ -25,7 +25,7 @@ public class RangeStatePatternEnemy : MonoBehaviour
 	public GameObject projectile;
 	public float fieldOfView;
 	public List<GameObject> projectileSpawn;
-	public GameObject target;
+	public PlayerController target;
 	List<GameObject> m_lastProjectile = new List<GameObject>();
 	public float fireTimer = 0.0f;
 
@@ -42,6 +42,8 @@ public class RangeStatePatternEnemy : MonoBehaviour
 	public RangePatrolState patrolState;
     [HideInInspector]
 	public RangeAttackState attackState;
+	[HideInInspector]
+	public RangeRunState runState;
     [HideInInspector]
     public Transform attackTarget;
     [HideInInspector]
@@ -55,6 +57,7 @@ public class RangeStatePatternEnemy : MonoBehaviour
 		alertState = new RangeAlertState(this);
 		patrolState = new RangePatrolState(this);
 		attackState = new RangeAttackState(this);
+		runState = new RangeRunState (this);
         navMeshAgent = GetComponent<NavMeshAgent>();
 		rigibody = GetComponent<Rigidbody> ();
 
@@ -85,7 +88,7 @@ public class RangeStatePatternEnemy : MonoBehaviour
 			if (projectileSpawn [i])
 			{
 				GameObject proj = Instantiate (projectile, projectileSpawn [i].transform.position, Quaternion.Euler (projectileSpawn [i].transform.forward)) as GameObject;
-				proj.GetComponent<BaseProjectile>().FireProjectile (projectileSpawn [i], target, enemyDamage);
+				proj.GetComponent<BaseProjectile>().FireProjectile (projectileSpawn [i], target.gameObject, enemyDamage);
 
 				m_lastProjectile.Add (proj);
 			}

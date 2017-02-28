@@ -45,7 +45,7 @@ public class ItemDatabase
             if (itemList.TryGetValue(tempList[i].itemName, out checker) == false)
             {
                 itemList.Add(tempList[i].itemName, tempList[i]);
-                Debug.Log(tempList[i].itemType);
+                //Debug.Log(tempList[i].itemType);
 
                 if (tempList[i].itemType == ItemType.Consumable)
                 {

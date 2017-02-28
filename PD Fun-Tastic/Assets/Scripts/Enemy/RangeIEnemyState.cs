@@ -15,4 +15,6 @@ public interface RangeIEnemyState
     void ToChaseState();
 
     void ToAttackState();
+
+	void ToRun ();
 }

@@ -17,4 +17,8 @@ public interface BossIEnemyState
     void ToAttackState();
 
 	void ToIdle();
+
+	void ToRun ();
+
+	void ToHeal ();
 }

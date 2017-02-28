@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossAttackState : BossIEnemyState
+public class BossAttackStateRange : BossIEnemyState
 {
 
 	private readonly BossStatePatternEnemy enemy;
 	public Animator[] animator;
 
 
-	public BossAttackState(BossStatePatternEnemy statePatternEnemy)
+	public BossAttackStateRange(BossStatePatternEnemy statePatternEnemy)
 	{
 		enemy = statePatternEnemy;
 	}
@@ -41,6 +41,20 @@ public class BossAttackState : BossIEnemyState
 
 	}
 
+	public void ToHeal()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.healState;
+	}
+
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
@@ -61,19 +75,22 @@ public class BossAttackState : BossIEnemyState
 		Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
 		if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
 		{
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("Walk");
-			enemy.chaseTarget = hit.transform;
-
+			if (enemy.GetComponent<Health> ().health >= 30) {
+				animator = enemy.GetComponentsInChildren<Animator> ();
+				animator [0].SetTrigger ("Walk");
+				enemy.chaseTarget = hit.transform;
+				ToChaseState ();
+			}
+			else
+			{
+				ToRun ();
+			}
 		}
 	}
 
 	private void Attack()
 	{
-		Debug.Log (enemy.attRan);
 
-		if (enemy.attRan == 1)
-		{
 			animator = enemy.GetComponentsInChildren<Animator> ();
 			animator[0].SetTrigger("RangeAttack");
 			enemy.fireTimer += Time.deltaTime;
@@ -96,30 +113,5 @@ public class BossAttackState : BossIEnemyState
 			}
 
 			enemy.navMeshAgent.Resume ();
-		}
-		if (enemy.attRan == 2) 
-		{
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("CloseAttack");
-			RaycastHit hit;
-			Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
-			float dashTimer = 0;
-			dashTimer += Time.deltaTime;
-			enemy.navMeshAgent.acceleration = 150;
-			enemy.navMeshAgent.speed = 150;
-
-
-			//	animator = enemy.GetComponentsInChildren<Animator> ();
-
-			if (Physics.Raycast (enemy.eyes.transform.position, enemyToTarget, out hit, 1f) && hit.collider.CompareTag ("Player")) {
-				enemy.navMeshAgent.Stop ();
-				hit.collider.GetComponent<Health> ().ReceiveDamage (10);
-				ToIdle ();
-			} 
-			else
-			{
-				ToChaseState ();
-			}
-		}
 	}
 }

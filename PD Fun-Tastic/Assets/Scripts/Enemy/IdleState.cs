@@ -47,6 +47,13 @@ public class IdleState : IEnemyState
 		
 	}
 
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();

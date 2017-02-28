@@ -23,6 +23,13 @@ public class RangePatrolState : RangeIEnemyState
     {
 
     }
+
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
 		
     public void OnTriggerEnter(Collider other)
     {
@@ -54,8 +61,16 @@ public class RangePatrolState : RangeIEnemyState
         RaycastHit hit;
         if (Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
         {
-            enemy.chaseTarget = hit.transform;
-            ToChaseState();
+			if (enemy.GetComponent<Health> ().health >= 30) {
+				animator = enemy.GetComponentsInChildren<Animator> ();
+				animator [0].SetTrigger ("Walk");
+				enemy.chaseTarget = hit.transform;
+				ToChaseState ();
+			}
+			else
+			{
+				ToRun ();
+			}
         }
     }
 

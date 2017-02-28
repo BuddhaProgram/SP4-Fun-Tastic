@@ -18,6 +18,13 @@ public class RangeChaseState : RangeIEnemyState
         Chase();
     }
 
+	public void ToRun()
+	{
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator[0].SetTrigger("Walk");
+		enemy.currentState = enemy.runState;
+	}
+
     public void OnTriggerEnter(Collider other)
     {
 
@@ -51,19 +58,22 @@ public class RangeChaseState : RangeIEnemyState
     {
         RaycastHit hit;
         Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
-        if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
-        {
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("Walk");
-            enemy.chaseTarget = hit.transform;
+		if (enemy.GetComponent<Health> ().health >= 30) {
+			if (Physics.Raycast (enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag ("Player")) {
+				animator = enemy.GetComponentsInChildren<Animator> ();
+				animator [0].SetTrigger ("Walk");
+				enemy.chaseTarget = hit.transform;
 
-        }
-        else
-        {
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("Walk");
-            ToAlertState();
-        }
+			} else {
+				animator = enemy.GetComponentsInChildren<Animator> ();
+				animator [0].SetTrigger ("Walk");
+				ToAlertState ();
+			}
+		} 
+		else
+		{
+			ToRun ();
+		}
         
     }
 

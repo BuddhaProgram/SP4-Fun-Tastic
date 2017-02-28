@@ -20,6 +20,7 @@ public class NormalProjectile : BaseProjectile {
 		if (launcher && target)
 		{
 			dir = (target.transform.position - launcher.transform.position).normalized;
+			dir.y = target.transform.position.y;
 			fire = true;
 		}
 	}
