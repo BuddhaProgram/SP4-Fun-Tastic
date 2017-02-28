@@ -2,71 +2,96 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InventoryData {
+public class InventoryData
+{
+    private static InventoryData instance = null;
 
-    
-   //private int rows = 9;
-    //private int col = 4;
-    [SerializeField]
-    private List<Item> inventoryItemList;
-    private static InventoryData instance;
-    static int numStarted = 0;
+    private List<Item> equipmentSlots;
+
+    private List<Item> inventoryStorage;
+    public Item draggedItem;
 
     public static InventoryData GetInstance()
     {
         if (instance == null)
         {
             instance = new InventoryData();
-            instance.Start();
-            Debug.Log("Num Started: " + numStarted++);
+            instance.Initialise();
         }
         return instance;
     }
 
-    public List<Item> GetItemList()
+    void Initialise()
     {
-        return inventoryItemList;
-    }
+      
 
-    void Start()
-    {
-        int rows = 9;
-        int col = 4;
-        inventoryItemList = new List<Item>();
-        //Debug.Log("Row: " + rows);
-        //Debug.Log("Column: " + col);
-        for (int i = 0; i < rows; i++)
+       draggedItem = null;
+
+        const int initialStorageSize = 36;
+        equipmentSlots = new List<Item>();
+        inventoryStorage = new List<Item>();
+        //Set initial empty items to null
+        for (int i = 0; i < initialStorageSize; ++i)
         {
-            for (int k = 0; k < col; k++)
-            {
-                //Debug.Log("i: " + i);
-                //Debug.Log("k: " + k);
-                //Item item = new Item();
-                inventoryItemList.Add(new Item());
-            }
-        }
-        //Debug.Log("Num Stuff: " + inventoryItemList.Count);
-        
-    }
-
-    public void AddItem(string itemName)
-    {
-        //foreach (Item item in inventoryItemList)
-        //{
-        //    if (item.itemType == Item.ItemType.None)
-        //    {
-        //       item = ItemDatabase.GetInstance().GetItem(itemName);
-        //    }
-        //}
-
-        for (int i = 0; i < 9*4; ++i)
-        {
-            if (inventoryItemList[i].itemType == Item.ItemType.None)
-            {
-                inventoryItemList[i] = ItemDatabase.GetInstance().GetItem(itemName);
-                return;
-            }
+            inventoryStorage.Add(null);
         }
 
+        for (int i = 0; i < 5; ++i)
+        {
+            equipmentSlots.Add(null);
+        }
+        //init starting items
+
+        AddItemToInventory("Legs");
+
     }
+
+    public void ChangeSlotItem(int index, Item item)
+    {
+        inventoryStorage[index] = item;
+    }
+    public Item GetSlotItem(int index)
+    {
+        return inventoryStorage[index];
+    }
+
+    public bool AddItemToInventory(Item item)
+    {
+        for (int i = 0; i < inventoryStorage.Count; ++i)
+        {
+            if (inventoryStorage[i] == null)
+            {
+                inventoryStorage[i] = item;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Item GetEquipment(ItemType type)
+    {
+        return equipmentSlots[(int)type];
+    }
+
+    public void ChangeEquipment(ItemType type, Item item)
+    {
+        equipmentSlots[(int)type] = item;
+    }
+
+    public bool AddItemToInventory(string itemName)
+    {
+        return AddItemToInventory(ItemDatabase.GetInstance().GetItem(itemName));
+    }
+
+    public void CloseInventory()
+    {
+        if (draggedItem != null)
+        {
+            AddItemToInventory(draggedItem);
+
+            draggedItem = null;
+        }
+    }
+    
+
 }

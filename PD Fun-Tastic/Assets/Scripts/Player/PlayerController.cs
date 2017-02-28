@@ -5,15 +5,23 @@ public class PlayerController : MonoBehaviour {
 
     public float f_moveSpeed = 1f;
     private Vector3 velocity = new Vector3(0,0,0);
-    public SwapHotbar swapHotbar;
+    //public SwapHotbar swapHotbar;
     public GameObject inventoryCanvas;
     public GameObject equipmentCanvas;
-    public GameObject minimapCamera;
+    //public GameObject minimapCamera;
     private bool invOpen;
     private bool equipOpen;
     private bool swapToggle;
     
 	void Start () {
+
+        inventoryCanvas.SetActive(false);
+
+        equipmentCanvas.SetActive(false);
+
+        ItemDatabase.GetInstance();
+
+        Debug.Log(ItemDatabase.GetInstance().size);
 	}
 	
 	void Update () {
@@ -31,7 +39,11 @@ public class PlayerController : MonoBehaviour {
             if (invOpen)
                 inventoryCanvas.SetActive(true);
             else
+            {
                 inventoryCanvas.SetActive(false);
+                inventoryCanvas.GetComponentInChildren<Inventory>().Close();
+            }
+            
         }
 
         //if (Input.GetKeyDown(KeyCode.E))
@@ -44,15 +56,15 @@ public class PlayerController : MonoBehaviour {
                 equipmentCanvas.SetActive(false);
         }
 
-        //if (Input.GetKeyDown(KeyCode.Tab))
-        if (Input.GetButtonDown("Swap Hotbar"))
-        {
-            swapToggle = !swapToggle;
-            if (swapToggle)
-                swapHotbar.SwapHotbarItem();
-            else
-                swapHotbar.SwapHotbarItem();
-        }
+        ////if (Input.GetKeyDown(KeyCode.Tab))
+        //if (Input.GetButtonDown("Swap Hotbar"))
+        //{
+        //    swapToggle = !swapToggle;
+        //    if (swapToggle)
+        //        swapHotbar.SwapHotbarItem();
+        //    else
+        //        swapHotbar.SwapHotbarItem();
+        //}
 
         //if (Input.GetKey(KeyCode.M))
         //if (Input.GetButton("Open Minimap"))

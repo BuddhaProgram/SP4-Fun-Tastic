@@ -4,10 +4,10 @@ using System.Collections;
 public class PlayerEquipmentHandler : MonoBehaviour
 {
 
-    public CharacterSlot weapon;
-    public CharacterSlot head;
-    public CharacterSlot body;
-    public CharacterSlot legs;
+    public EquipmentSlot weapon;
+    public EquipmentSlot head;
+    public EquipmentSlot body;
+    public EquipmentSlot legs;
 
     public AbilityControl basic;
     public AbilityControl skill1;
@@ -46,12 +46,12 @@ public class PlayerEquipmentHandler : MonoBehaviour
         s.agi_eq = 0;
 
 
-        if (weapon.item.itemType != Item.ItemType.None)
+        if (weapon.storedItem != null)
         {
-            s.atk_eq += weapon.item.atk;
-            s.vit_eq += weapon.item.vit;
-            s.agi_eq += weapon.item.agi;
-            basic.ability = weapon.item.ability;
+            s.atk_eq += weapon.storedItem.atk;
+            s.vit_eq += weapon.storedItem.vit;
+            s.agi_eq += weapon.storedItem.agi;
+            basic.ability = weapon.storedItem.ability;
            // basic.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
         else
@@ -60,13 +60,13 @@ public class PlayerEquipmentHandler : MonoBehaviour
         }
 
 
-        if (head.item.itemType != Item.ItemType.None)
+        if (head.storedItem != null)
         {
 
-            s.atk_eq += head.item.atk;
-            s.vit_eq += head.item.vit;
-            s.agi_eq += head.item.agi;
-            skill1.ability = head.item.ability;
+            s.atk_eq += head.storedItem.atk;
+            s.vit_eq += head.storedItem.vit;
+            s.agi_eq += head.storedItem.agi;
+            skill1.ability = head.storedItem.ability;
             //skill1.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
         else
@@ -74,24 +74,24 @@ public class PlayerEquipmentHandler : MonoBehaviour
             skill1.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
 
-        if (body.item.itemType != Item.ItemType.None)
+        if (body.storedItem != null)
         {
-            skill2.ability = body.item.ability;
-            s.atk_eq += body.item.atk;
-            s.vit_eq += body.item.vit;
-            s.agi_eq += body.item.agi;
+            skill2.ability = body.storedItem.ability;
+            s.atk_eq += body.storedItem.atk;
+            s.vit_eq += body.storedItem.vit;
+            s.agi_eq += body.storedItem.agi;
         }
         else
         {
             skill2.ability = AbilityDataBase.GetInstance().GetAbility("Basic Ability");
         }
 
-        if (legs.item.itemType != Item.ItemType.None)
+        if (legs.storedItem != null)
         {
-            skill3.ability = legs.item.ability;
-            s.atk_eq += legs.item.atk;
-            s.vit_eq += legs.item.vit;
-            s.agi_eq += legs.item.agi;
+            skill3.ability = legs.storedItem.ability;
+            s.atk_eq += legs.storedItem.atk;
+            s.vit_eq += legs.storedItem.vit;
+            s.agi_eq += legs.storedItem.agi;
         }
         else
         {

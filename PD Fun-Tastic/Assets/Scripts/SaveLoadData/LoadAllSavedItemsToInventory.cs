@@ -10,26 +10,26 @@ public class LoadAllSavedItemsToInventory{
 
     public static void GetInventoryItemsFromKey(string keyName)
     {
-        int i_arrayLength = 0;
-        if (PlayerPrefs.HasKey(keyName))
-        {
-            i_arrayLength = checked(PlayerPrefsX.GetIntArray(keyName).Length);
+        //int i_arrayLength = 0;
+        //if (PlayerPrefs.HasKey(keyName))
+        //{
+        //    i_arrayLength = checked(PlayerPrefsX.GetIntArray(keyName).Length);
 
-            for (int i = 0; i < i_arrayLength; ++i)
-            {
-                i_allItemID[i] = PlayerPrefsX.GetIntArray(keyName)[i];
+        //    for (int i = 0; i < i_arrayLength; ++i)
+        //    {
+        //        i_allItemID[i] = PlayerPrefsX.GetIntArray(keyName)[i];
 
-                if (_itemListInstance.items[i].GetItemID() == i_allItemID[i])
-                {
-                    _InventoryListInstance.AddItem(_itemListInstance.items[i].itemName);
-                }
-            }
-        }
+        //        if (_itemListInstance.items[i].GetItemID() == i_allItemID[i])
+        //        {
+        //            _InventoryListInstance.AddItem(_itemListInstance.items[i].itemName);
+        //        }
+        //    }
+        //}
 
-        else
-        {
-            return;
-        }
+        //else
+        //{
+        //    return;
+        //}
 
     }
 }

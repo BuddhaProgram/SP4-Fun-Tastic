@@ -11,46 +11,87 @@ public class ItemDatabase
         if (instance == null)
         {
             instance = new ItemDatabase();
-            instance.Start();
+            instance.Initialise();
         }
         return instance;
     }
 
-    public List<Item> items = new List<Item>();
+    public float size = 0;
 
-    void Start()
+    private Dictionary<string,Item> itemList;
+    private List<Item> consumableList;
+    private List<Item> weaponryList;
+
+    void Initialise()
     {
-        //items.Add(new Item("Nooblord's Sword", 0, 1, 3 ,0,1, Item.ItemType.Weapon, "Basic Ability", "A sword wrapped in a gooey, green kinda slime. The chipped blade makes it very unappetising."));
-        //items.Add(new Item("Shark Attack Sword", 1, 5,1,0, 1, Item.ItemType.Weapon, "Basic Ability", "The triangle head makes it looks like a shark. Shark Attack!"));
-        //items.Add(new Item("Godly Sword Maybe", 2, 10, 2, 10, 1, Item.ItemType.Weapon, "Lightning Ball", "Some kinda lightning, laser shooting, godly sword. Maybe."));
-        //items.Add(new Item("Blood Potion", 3, 0,0,0, 1, Item.ItemType.Consumable, "Basic Ability", "Red liquid that looks like blood. Doesn't it makes you a vampire if you drink it?"));
-        //
-        //items.Add(new Item("What Helmet", 4, 0,3,0, 1, Item.ItemType.Head, "Fire Ball", "Helmet that doesn't even look like a helmet. What kind of protection is this?"));
-        //items.Add(new Item("Headbutt Helmet", 5, 0,5,0, 1, Item.ItemType.Head, "Basic Ability", "Maybe you could use this to headbutt someone...in the butt."));
-        //items.Add(new Item("Poking Helmet", 6,3,3,0, 1, Item.ItemType.Head, "Basic Ability", "The ultimate helmet that can even poke your shoulders. Definitely godly."));
-        //items.Add(new Item("Random Banana", 7, 0,0,0, 1, Item.ItemType.Consumable, "Basic Ability", "Oh look, it's just a random banana."));
-        //
-        //items.Add(new Item("Shiny Armor", 8, 0,10,0 ,1, Item.ItemType.Body, "Fire Ball", "Just an ordinary armor covered in silver paint"));
-        //items.Add(new Item("Gold Armor", 9, 0,15,0 ,1, Item.ItemType.Body, "Basic Ability", "Literally made out of Gold, must be really really heavy"));
-        //items.Add(new Item("Fiery God Armor", 10, 10,15,10 ,1, Item.ItemType.Body, "Basic Ability", "Some say this armor burns brightly in the dark, while some say it burns the wearer."));
-        //items.Add(new Item("Eye", 11, 0,0,0, 1, Item.ItemType.Consumable, "Basic Ability", "A delicious eyeball that gives awesome stats when eaten. Looks totally tasty! Oh, it blinked."));
-        //
-        //items.Add(new Item("Cheap Wood Shoe", 12, 0,2,0 ,1, Item.ItemType.Leg, "Basic Ability", "Cheap, wooden shoe that doesn't exactly give protection and instead hurts you"));
-        //items.Add(new Item("Iron Wood Shoe", 13, 5,5,0, 1, Item.ItemType.Leg, "Basic Ability", "Upgraded from the Cheap Wood Shoe, now with Iron and more pain!"));
-        //items.Add(new Item("Mysterious Shoe", 14, 10,10,10, 1, Item.ItemType.Leg, "Basic Ability", "Mysterious shoe with a cloud symbol on it...Oooooo"));
-        //items.Add(new Item("Bone", 15, 0,0,0, 1, Item.ItemType.Consumable, "Basic Ability", "Bone that can be eaten. Must be nice?"));
+        //initialise itemlist
+        itemList = new Dictionary<string, Item>();
+        consumableList = new List<Item>();
+        weaponryList = new List<Item>();
 
+        Debug.Log("trying to load item");
+
+        //load all item.asset from folder into list
+        Item[] tempList;
+        tempList = Resources.LoadAll<Item>("Scriptable Objects/Items");
+        size = tempList.Length;
+        Debug.Log(tempList.Length);
+        //loop through and add into dictionary(itemList)
+        for (int i = 0; i < tempList.Length; ++i)
+        {
+            // check if there is already an item with same name
+            // maybe slow but start is load time
+            Item checker;
+            if (itemList.TryGetValue(tempList[i].itemName, out checker) == false)
+            {
+                itemList.Add(tempList[i].itemName, tempList[i]);
+                Debug.Log(tempList[i].itemType);
+
+                if (tempList[i].itemType == ItemType.Consumable)
+                {
+                    consumableList.Add(tempList[i]);
+                }
+
+                else 
+                {
+                    weaponryList.Add(tempList[i]);
+                }
+                //Debug.Log(tempList[i].ability.aName);
+            }
+            // retard checkers
+            else 
+            {
+                Debug.Log("Item With Same Name!! DONT RETARD PLS");
+                Debug.Log(tempList[i].atk);
+            }
+            //More retard checkers
+            if (tempList[i].itemName == "")
+            {
+                Debug.Log("ITEM NO NAME LA RETARD");
+            }
+           
+        }
     }
+
 
     public Item GetItem(string name)
     {
-        foreach (Item it in items)
+        Item temp;
+        if (itemList.TryGetValue(name, out temp) == true)
         {
-            if (it.itemName == name)
-            {
-                return it;
-            }
+            return temp;
         }
-        return new Item();
+
+        return null;
+    }
+
+    public List<Item> GetConsumableList()
+    {
+        return consumableList;
+    }
+
+    public List<Item> GetWeaponryList()
+    {
+        return weaponryList;
     }
 }

@@ -1,121 +1,59 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
-{
+public class SlotScript : MonoBehaviour ,IPointerClickHandler{
 
-    public Item item;
-    Image itemImage;
-    public int slotNumber;
-    Inventory inventory;
-    Text itemAmount;
+    public int index;
+    public Item storedItem = null;
+    //what was this for again? cant rmb
+    public Image iconImage;
 
-    void Start()
+	// Use this for initialization
+	void Start () {
+
+        storedItem = InventoryData.GetInstance().GetSlotItem(index);
+
+ 
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        storedItem = InventoryData.GetInstance().GetSlotItem(index);
+
+        if (storedItem != null)
+        {
+            iconImage.sprite = storedItem.itemIcon;
+            iconImage.enabled = true;
+           
+        }
+        else {
+            iconImage.enabled = false;
+        }
+        
+
+	}
+
+    public void PlaceItem(Item item)
     {
-        itemAmount = gameObject.transform.GetChild(1).GetComponent<Text>();
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-        itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
+        InventoryData.GetInstance().ChangeSlotItem(this.index, item);
+        storedItem = item;
     }
 
-    void Update()
+    public void OnPointerClick(PointerEventData data)
     {
-        if (inventory.items[slotNumber].itemType != Item.ItemType.None)
-        {
-            itemAmount.enabled = false;
-
-            item = inventory.items[slotNumber];
-            itemImage.enabled = true;
-            itemImage.sprite = item.itemIcon;
-
-            if (inventory.items[slotNumber].itemType == Item.ItemType.Consumable)
-            {
-                itemAmount.enabled = true;
-                itemAmount.text = "" + inventory.items[slotNumber].itemStack;
-            }
-        }
-        else
-        {
-            itemImage.enabled = false;
-        }
-    }
-
-    public void OnPointerDown(PointerEventData data)
-    {
+        //check if its left clicked
         if (data.button == PointerEventData.InputButton.Left)
         {
-            if (!inventory.draggingItem)
-            {
-                if (inventory.items[slotNumber].itemName != null)
-                {
-                    inventory.showDraggedItem(inventory.items[slotNumber], slotNumber);
-                    inventory.items[slotNumber] = new Item();
+            //swap the items
+            Item temp = storedItem;
+            PlaceItem(InventoryData.GetInstance().draggedItem);
+            InventoryData.GetInstance().draggedItem = temp;
 
-                    itemAmount.enabled = false;
-                }
-            }
-            else
-            {
-                if (inventory.items[slotNumber].itemType == Item.ItemType.None && inventory.draggingItem)
-                {
-                    Item temp = inventory.items[slotNumber];
-
-                    inventory.items[slotNumber] = inventory.draggedItem;
-                    inventory.draggedItem = temp;
-
-                    inventory.closeDraggedItem();
-                }
-                else
-                {
-                    try
-                    {
-                        if (inventory.draggingItem)
-                        {
-                            if (inventory.items[slotNumber].itemName != null)
-                            {
-                                inventory.items[inventory.indexOfDraggedItem] = inventory.items[slotNumber];
-                                inventory.items[slotNumber] = inventory.draggedItem;
-                                inventory.closeDraggedItem();
-                            }
-                        }
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
-
-        //if (data.button == PointerEventData.InputButton.Right)
-        //{
-        //    if (inventory.items[slotNumber].itemType == Item.ItemType.Consumable)
-        //    {
-        //        inventory.items[slotNumber].itemstack--;
-
-        //        if (inventory.items[slotNumber].itemstack == 0)
-        //        {
-        //            inventory.items[slotNumber] = new Item();
-        //            itemAmount.enabled = false;
-        //            inventory.closeTooltip();
-        //        }
-        //    }
-        //}
-    }
-
-    public void OnPointerEnter(PointerEventData data)
-    {
-        if (inventory.items[slotNumber].itemName != null && !inventory.draggingItem)
-        {
-            inventory.showTooltip(inventory.Slots[slotNumber].GetComponent<RectTransform>().localPosition, inventory.items[slotNumber]);
+            //Debug.Log("CLICKED");
         }
     }
 
-    public void OnPointerExit(PointerEventData data)
-    {
-        if (inventory.items[slotNumber].itemName != null)
-        {
-            inventory.closeTooltip();
-        }
-    }
+
 }
