@@ -28,14 +28,14 @@ public class BossIdleState : BossIEnemyState
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.healState;
 	}
 
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
@@ -52,7 +52,7 @@ public class BossIdleState : BossIEnemyState
 	public void ToPatrolState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.patrolState;
 	}
 
@@ -64,7 +64,7 @@ public class BossIdleState : BossIEnemyState
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.chaseState;
 		searchTimer = 0f;
 	}
@@ -73,7 +73,7 @@ public class BossIdleState : BossIEnemyState
 	private void Idle()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 
 		idleTimer += Time.deltaTime;
 		enemy.navMeshAgent.Stop ();

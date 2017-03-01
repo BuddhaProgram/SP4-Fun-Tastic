@@ -9,6 +9,7 @@ public class InventoryData
     private List<Item> equipmentSlots;
 
     private List<Item> inventoryStorage;
+    private int i_currency;
     public Item draggedItem;
 
     public static InventoryData GetInstance()
@@ -30,6 +31,7 @@ public class InventoryData
         const int initialStorageSize = 36;
         equipmentSlots = new List<Item>();
         inventoryStorage = new List<Item>();
+        i_currency = 0;
         //Set initial empty items to null
         for (int i = 0; i < initialStorageSize; ++i)
         {
@@ -81,6 +83,26 @@ public class InventoryData
     public bool AddItemToInventory(string itemName)
     {
         return AddItemToInventory(ItemDatabase.GetInstance().GetItem(itemName));
+    }
+
+    public void AddCurrency(int addCurrency)
+    {
+        i_currency = i_currency + addCurrency;
+    }
+
+    public bool CheckIfEnoughCurrency(int checkCurrency)
+    {
+        if (i_currency - checkCurrency < 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void MinusCurrency(int minusCurrency)
+    {
+        i_currency = i_currency - minusCurrency;
     }
 
     public void CloseInventory()

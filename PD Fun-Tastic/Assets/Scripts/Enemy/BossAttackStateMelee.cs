@@ -22,14 +22,14 @@ public class BossAttackStateMelee : BossIEnemyState
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.healState;
 	}
 
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
@@ -46,7 +46,7 @@ public class BossAttackStateMelee : BossIEnemyState
 	public void ToAlertState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.alertState;
 	}
 
@@ -58,14 +58,14 @@ public class BossAttackStateMelee : BossIEnemyState
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.chaseState;
 	}
 
 	public void ToIdle()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.idleState;
 	}
 
@@ -91,8 +91,8 @@ public class BossAttackStateMelee : BossIEnemyState
 	private void Attack()
 	{
 
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("CloseAttack");
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator [0].SetTrigger ("MeleeAttack");
 			RaycastHit hit;
 			Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
 			float dashTimer = 0;

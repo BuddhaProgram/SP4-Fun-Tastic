@@ -19,6 +19,11 @@ public class PlayerEquipmentHandler : MonoBehaviour
     public AbilityUI skill2_UI;
     public AbilityUI skill3_UI;
 
+ 
+    public AbilityUI mobile_skill1_UI;
+    public AbilityUI mobile_skill2_UI;
+    public AbilityUI mobile_skill3_UI;
+
     private string lastBasic;
     private string lastSkill1;
     private string lastSkill2;
@@ -106,15 +111,18 @@ public class PlayerEquipmentHandler : MonoBehaviour
         if (lastSkill1 != skill1.ability.aName)
         {
             skill1_UI.Initialize();
+            mobile_skill1_UI.Initialize();
         }
 
         if (lastSkill2 != skill2.ability.aName)
         {
             skill2_UI.Initialize();
+            mobile_skill2_UI.Initialize();
         }
         if (lastSkill3 != skill3.ability.aName)
         {
             skill3_UI.Initialize();
+            mobile_skill3_UI.Initialize();
         }
 
 

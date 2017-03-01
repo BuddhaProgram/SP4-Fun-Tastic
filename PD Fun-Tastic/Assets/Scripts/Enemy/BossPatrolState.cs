@@ -41,28 +41,28 @@ public class BossPatrolState : BossIEnemyState
 	public void ToAlertState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.alertState;
 	}
 
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.chaseState;
 	}
 
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Heal");
 		enemy.currentState = enemy.healState;
 	}
 
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
@@ -87,7 +87,7 @@ public class BossPatrolState : BossIEnemyState
 	void Patrol()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.navMeshAgent.acceleration = enemy.enemyAccelerationSpeed;
 		enemy.navMeshAgent.speed = enemy.enemyPatrolSpeed * Time.deltaTime;
 		enemy.meshRendererFlag.material.color = Color.green;
@@ -96,7 +96,7 @@ public class BossPatrolState : BossIEnemyState
 		if (enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance && !enemy.navMeshAgent.pathPending)
 		{
 			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("Walk");
+			animator [0].SetTrigger ("Walk");
 			nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
 		}
 		enemy.navMeshAgent.Resume();

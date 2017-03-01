@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class LoadConsumablesToShop : MonoBehaviour
 {
     ItemDatabase _allConsumableItems = ItemDatabase.GetInstance();
-    List<Item> _ConsumableListInShop;
+    List<Item> _shopList;
     int[] i_randomConsumableItems = new int[10]; //Make sure not larger than consumable list size or you will infinite while loop and universe explodes.
 
     // Use this for initialization
@@ -23,9 +23,9 @@ public class LoadConsumablesToShop : MonoBehaviour
 
     public void RandomizedShopList()
     {
-        List<Item> tempItemList = _allConsumableItems.GetConsumableList();
-        int i_totalConsumables = _allConsumableItems.GetConsumableList().Count;
-        _ConsumableListInShop = new List<Item>();
+        List<Item> tempItemList = _allConsumableItems.GetItemListForShop();
+        int i_totalConsumables = _allConsumableItems.GetItemListForShop().Count;
+        _shopList = new List<Item>();
         // Makes sure the list is empty before adding it and display in the shop
         //_ConsumableListInShop.Clear();
 
@@ -62,12 +62,12 @@ public class LoadConsumablesToShop : MonoBehaviour
             while (b_noDuplicate == false);
 
             i_randomConsumableItems[i_alreadyChosen] = randomItemIndex;
-            _ConsumableListInShop.Add(tempItemList[randomItemIndex]);
+            _shopList.Add(tempItemList[randomItemIndex]);
         }
     }
 
     public List<Item> GetShopList()
     {
-        return _ConsumableListInShop;
+        return _shopList;
     }
 }

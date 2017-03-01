@@ -13,6 +13,9 @@ public class AbilityRangeIndicatorRenderer : MonoBehaviour {
     [HideInInspector]
     public Vector3 fwd;
 
+    [HideInInspector]
+    public Input input;
+
     public Camera cam;
 
 	// Use this for initialization

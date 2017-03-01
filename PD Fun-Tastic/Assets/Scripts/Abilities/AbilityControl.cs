@@ -14,10 +14,14 @@ public class AbilityControl : MonoBehaviour {
     [HideInInspector]
     public bool abilityTriggered = false;
 
+    public bool mobile;
+    public bool pressed = false;
+    public bool released = false;
+
     //private bool noOtherAbilityInUse = true;
 	// Use this for initialization
 	void Start () {
-	
+        mobile = true;
 	}
 	
 	// Update is called once per frame
@@ -26,36 +30,67 @@ public class AbilityControl : MonoBehaviour {
         {
             f_coolDownLeft -= Time.deltaTime;
         }
-        if (Input.GetButtonDown(axisTriggerName))
+        if (mobile == false)
         {
-            if (player.GetComponent<AbilityRangeIndicatorRenderer>().skillInUse == false)
+            Debug.Log("mobile is false");
+            if (Input.GetButtonDown(axisTriggerName))
             {
-                if (ability.a_coolDown > 1f)
-                {
-                    ability.DrawAimLine(player);
-                }
-                
+                Pressed();
+            }
+            else if (Input.GetButtonUp(axisTriggerName))
+            {
+                Released();
             }
         }
-        else if (Input.GetButtonUp(axisTriggerName))
-        {
-            if (f_coolDownLeft <= 0f)
+        else {
+            Debug.Log("mobile is true");
+            if (pressed == true)
             {
-                abilityTriggered = true;
-                f_coolDownLeft = ability.a_coolDown * (1.0f - (player.GetComponent<Status>().GetAgi() / 100f));
-                if (ability.GetType() == 2)
-                {
-                    ability.TriggerAbility(cam.GetComponent<camFollowPlayer>().GetMouseOnPlane(), player.transform.forward, player.GetComponent<Status>().GetAtk());
-                }
-                else {
-                    ability.TriggerAbility(player.transform.position, player.transform.forward, player.GetComponent<Status>().GetAtk());
-                }
+                Pressed();
+            }
+            if (released == true)
+            {
+                Released();
+            }
 
-               
-                //player.GetComponent<AbilityRangeIndicatorRenderer>().skillInUse = false;
-                player.GetComponent<AbilityRangeIndicatorRenderer>().UndrawAim(); 
-            }
-            
         }
+        
 	}
+
+    public void Pressed()
+    {
+        if (player.GetComponent<AbilityRangeIndicatorRenderer>().skillInUse == false)
+        {
+            if (ability.a_coolDown > 1f && f_coolDownLeft<=0f)
+            {
+                ability.DrawAimLine(player);
+            }
+
+        }
+    }
+
+    public void Released()
+    {
+        pressed = false;
+        released = false;
+        if (f_coolDownLeft <= 0f)
+        {
+            abilityTriggered = true;
+            f_coolDownLeft = ability.a_coolDown * (1.0f - (player.GetComponent<Status>().GetAgi() / 100f));
+            if (ability.GetType() == 2)
+            {
+                ability.TriggerAbility(cam.GetComponent<camFollowPlayer>().GetMouseOnPlane(), player.transform.forward, player.GetComponent<Status>().GetAtk());
+            }
+            else
+            {
+                ability.TriggerAbility(player.transform.position, player.transform.forward, player.GetComponent<Status>().GetAtk());
+            }
+
+
+            //player.GetComponent<AbilityRangeIndicatorRenderer>().skillInUse = false;
+           
+        }
+        player.GetComponent<AbilityRangeIndicatorRenderer>().UndrawAim();
+            
+    }
 }

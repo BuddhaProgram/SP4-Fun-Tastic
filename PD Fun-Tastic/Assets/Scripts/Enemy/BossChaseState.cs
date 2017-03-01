@@ -36,7 +36,7 @@ public class BossChaseState : BossIEnemyState
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Heal");
 		enemy.currentState = enemy.healState;
 	}
 
@@ -44,7 +44,7 @@ public class BossChaseState : BossIEnemyState
 	public void ToAlertState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.alertState;
 	}
 
@@ -56,15 +56,19 @@ public class BossChaseState : BossIEnemyState
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
 	public void ToAttackState()
 	{
 		if (Random.Range (1, 3) == 1) {
+			animator = enemy.GetComponentsInChildren<Animator> ();
+			animator [0].SetTrigger ("RangeAttack");
 			enemy.currentState = enemy.attackStateRange;
 		} else {
+			animator = enemy.GetComponentsInChildren<Animator> ();
+			animator [0].SetTrigger ("CloseAttack");
 			enemy.currentState = enemy.attackStateMelee;
 		}
 	}

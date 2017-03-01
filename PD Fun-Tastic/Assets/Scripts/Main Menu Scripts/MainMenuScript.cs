@@ -2,10 +2,14 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MainMenuScript : MonoBehaviour {
     public GameObject _MainMenuPanel;
     public GameObject _WarningPopupPanel;
+    InventoryData _GetInventoryFromKey = InventoryData.GetInstance();
+    string[] _allItemNames;
+
     public string s_sceneName;
     // Use this for initialization
     void Start()
@@ -21,7 +25,7 @@ public class MainMenuScript : MonoBehaviour {
 
     public void CheckHasSaveFile()
     {
-        if (PlayerPrefsX.GetBool("Player") == false)
+        if (PlayerPrefsX.GetBool("Inventory") == true)
         {
             _MainMenuPanel.SetActive(false);
             _WarningPopupPanel.SetActive(true);
@@ -32,20 +36,29 @@ public class MainMenuScript : MonoBehaviour {
         else
         {
             print("Erase all data");
-            //SceneManager.LoadScene(s_sceneName);
+            LoadNewGame();
         }
     }
 
     public void LoadNewGame()
     {
-        print("New game called");
-        SceneManager.LoadScene(s_sceneName);
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadContinueGame()
     {
-        print("Continue game called");
-        //SceneManager.LoadScene(s_sceneName);
+        if (PlayerPrefs.HasKey("Inventory") == true)
+        {
+            _allItemNames = PlayerPrefsX.GetStringArray("Inventory");
+
+            for (int i = 0; i < _allItemNames.Length; ++i)
+            {
+                _GetInventoryFromKey.AddItemToInventory(_allItemNames[i]);
+            }
+            print("Continue game called");
+            SceneManager.LoadScene(s_sceneName);
+        }
     }
 
     public void BackToMainMenu()

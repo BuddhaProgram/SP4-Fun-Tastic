@@ -115,7 +115,8 @@ public class BossStatePatternEnemy : MonoBehaviour
     {
         if(this.GetComponent<Health>().health <= 0)
         {
-            gameObject.GetComponent<EnemyReductionChecker>().EnemyRequirementChecker();
+            this.gameObject.GetComponent<EnemyReductionChecker>().EnemyRequirementChecker();
+            //gameObject.GetComponent<EnemyReductionChecker>().SetValueToDictionary();
             Destroy(gameObject);
         }
     }

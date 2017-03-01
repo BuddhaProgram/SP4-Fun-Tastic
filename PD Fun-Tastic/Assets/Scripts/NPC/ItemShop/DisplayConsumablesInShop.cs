@@ -4,20 +4,22 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DisplayConsumablesInShop : SpecificNPC {
-    public Text[] _consumableName;
-    public Text[] _consumableDescription;
-    public Image[] _consumableImage;
-    public GameObject GetLoadedConsumables;
+    public Text[] _nameItem;
+    public Text[] _descriptionItem;
+    public Text[] _costItem;
+    public Image[] _itemImage;
+    public GameObject GetLoadedItems;
 
     public void DisplayConsumables()
     {
-        List<Item> tempItemList = GetLoadedConsumables.gameObject.GetComponent<LoadConsumablesToShop>().GetShopList();
+        List<Item> tempItemList = GetLoadedItems.gameObject.GetComponent<LoadConsumablesToShop>().GetShopList();
         print(tempItemList.Count);
         for (int i = 0; i < 10; ++i)
         {
-            _consumableName[i].GetComponent<Text>().text = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemName;
-            _consumableDescription[i].GetComponent<Text>().text = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemDesc;
-            _consumableImage[i].GetComponent<Image>().sprite = GetLoadedConsumables.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemIcon;
+            _nameItem[i].GetComponent<Text>().text = GetLoadedItems.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemName;
+            _descriptionItem[i].GetComponent<Text>().text = GetLoadedItems.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemDesc;
+            _costItem[i].GetComponent<Text>().text = GetLoadedItems.GetComponent<LoadConsumablesToShop>().GetShopList()[i].buyValue.ToString();
+            _itemImage[i].GetComponent<Image>().sprite = GetLoadedItems.GetComponent<LoadConsumablesToShop>().GetShopList()[i].itemIcon;
         }
     }
 

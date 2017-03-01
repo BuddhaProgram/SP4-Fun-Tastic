@@ -23,5 +23,6 @@ public class Item:ScriptableObject
     public int agi;
     public ItemType itemType;
     public Abilities ability;
-
+    public int buyValue;
+    public int sellValue;
 }

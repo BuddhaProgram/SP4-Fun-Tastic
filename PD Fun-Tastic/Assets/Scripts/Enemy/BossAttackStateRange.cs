@@ -32,7 +32,7 @@ public class BossAttackStateRange : BossIEnemyState
 	public void ToAlertState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.alertState;
 	}
 
@@ -44,28 +44,28 @@ public class BossAttackStateRange : BossIEnemyState
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Heal");
 		enemy.currentState = enemy.healState;
 	}
 
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
 	public void ToChaseState()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.chaseState;
 	}
 
 	public void ToIdle()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.currentState = enemy.idleState;
 	}
 
@@ -91,8 +91,8 @@ public class BossAttackStateRange : BossIEnemyState
 	private void Attack()
 	{
 
-			animator = enemy.GetComponentsInChildren<Animator> ();
-			animator[0].SetTrigger("RangeAttack");
+		animator = enemy.GetComponentsInChildren<Animator> ();
+		animator [0].SetTrigger ("RangeAttack");
 			enemy.fireTimer += Time.deltaTime;
 			Vector3 playerDir = (enemy.target.transform.position - enemy.transform.position).normalized;
 			Quaternion lookRotation = Quaternion.LookRotation (new Vector3 (playerDir.x, 0, playerDir.z));

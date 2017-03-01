@@ -19,16 +19,13 @@ public class ItemDatabase
     public float size = 0;
 
     private Dictionary<string,Item> itemList;
-    private List<Item> consumableList;
-    private List<Item> weaponryList;
+    private List<Item> itemListForShop;
 
     void Initialise()
     {
         //initialise itemlist
         itemList = new Dictionary<string, Item>();
-        consumableList = new List<Item>();
-        weaponryList = new List<Item>();
-
+        itemListForShop = new List<Item>();
         //Debug.Log("trying to load item");
 
         //load all item.asset from folder into list
@@ -47,15 +44,7 @@ public class ItemDatabase
                 itemList.Add(tempList[i].itemName, tempList[i]);
                 //Debug.Log(tempList[i].itemType);
 
-                if (tempList[i].itemType == ItemType.Consumable)
-                {
-                    consumableList.Add(tempList[i]);
-                }
-
-                else 
-                {
-                    weaponryList.Add(tempList[i]);
-                }
+                itemListForShop.Add(tempList[i]);
                 //Debug.Log(tempList[i].ability.aName);
             }
             // retard checkers
@@ -85,13 +74,8 @@ public class ItemDatabase
         return null;
     }
 
-    public List<Item> GetConsumableList()
+    public List<Item> GetItemListForShop()
     {
-        return consumableList;
-    }
-
-    public List<Item> GetWeaponryList()
-    {
-        return weaponryList;
+        return itemListForShop;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float f_moveSpeed = 1f;
-    private Vector3 velocity = new Vector3(0,0,0);
+    public Vector3 velocity = new Vector3(0,0,0);
     //public SwapHotbar swapHotbar;
     public GameObject inventoryCanvas;
     public GameObject equipmentCanvas;
@@ -26,11 +26,10 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 
-        float forward = Input.GetAxis("ForwardMovement");
-        float side = Input.GetAxis("SideMovement");
-        velocity.Set(side * Time.deltaTime * f_moveSpeed, 0, forward * Time.deltaTime * f_moveSpeed);
+        
 
         GetComponent<Rigidbody>().velocity = velocity ;
+
 
         //if (Input.GetKeyDown(KeyCode.I))
         if (Input.GetButtonDown("Open Inventory"))
@@ -73,6 +72,11 @@ public class PlayerController : MonoBehaviour {
         //    Debug.Log(minimapCamera.transform.position.y);
         //    minimapCamera.transform.position += Vector3.up * 50;
         //}
+
+        float forward = Input.GetAxis("ForwardMovement");
+        float side = Input.GetAxis("SideMovement");
+
+        velocity.Set(side * Time.deltaTime * f_moveSpeed, 0, forward * Time.deltaTime * f_moveSpeed);
 	}
 
     void OnCollisionEnter(Collision collider)

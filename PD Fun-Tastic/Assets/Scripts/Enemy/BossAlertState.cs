@@ -36,14 +36,14 @@ public class BossAlertState : BossIEnemyState
 	public void ToRun()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
 		enemy.currentState = enemy.runState;
 	}
 
     public void ToPatrolState()
     {
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
         enemy.currentState = enemy.patrolState;
         searchTimer = 0f;
     }
@@ -51,7 +51,7 @@ public class BossAlertState : BossIEnemyState
 	public void ToHeal()
 	{
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Heal");
 		enemy.currentState = enemy.healState;
 	}
 
@@ -64,7 +64,7 @@ public class BossAlertState : BossIEnemyState
     public void ToChaseState()
     {
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Walk");
+		animator [0].SetTrigger ("Walk");
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
     }
@@ -90,7 +90,7 @@ public class BossAlertState : BossIEnemyState
     private void Search()
     {
 		animator = enemy.GetComponentsInChildren<Animator> ();
-		animator[0].SetTrigger("Idle");
+		animator [0].SetTrigger ("Idle");
 		enemy.meshRendererFlag.material.color = Color.yellow;
         enemy.navMeshAgent.Stop();
 		enemy.transform.Rotate (0, enemy.searchingTurnSpeed * Time.deltaTime, 0);

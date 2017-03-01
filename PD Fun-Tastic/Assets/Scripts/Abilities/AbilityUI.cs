@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class AbilityUI : MonoBehaviour {
+public class AbilityUI : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler {
 
     public Image darkMask;
     public Text coolDownTextDisplay;
@@ -67,4 +68,22 @@ public class AbilityUI : MonoBehaviour {
             }
         }
 	}
+
+
+    public void OnBeginDrag(PointerEventData data)
+    {
+        abilityControl.pressed = true;
+    }
+
+    public void OnDrag(PointerEventData data)
+    {
+        
+    }
+
+    public void OnEndDrag(PointerEventData data)
+    {
+        Debug.Log("Released");
+        abilityControl.released = true;
+    }
+
 }

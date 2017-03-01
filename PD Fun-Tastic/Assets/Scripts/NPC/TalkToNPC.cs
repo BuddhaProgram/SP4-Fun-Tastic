@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,6 @@ using System.IO;
 public class TalkToNPC : MonoBehaviour{
     public GameObject _NPCQuest;
     public GameObject _NPCItem;
-    public GameObject _NPCWeapon;
     public GameObject _Player;
     public float f_distanceCheck;
 
@@ -41,6 +41,7 @@ public class TalkToNPC : MonoBehaviour{
 
         else if ((_NPCItem.transform.position - _Player.transform.position).sqrMagnitude < f_distanceCheck * f_distanceCheck)
         {
+
             if (Input.GetButtonDown("TalkNPC") && b_isNearNPC == false)
             {
                 b_isNearNPC = true;
